@@ -17,7 +17,7 @@
 <div class="stage"><div class="phone"><iframe id="f" src="/bnml-skku-website/" scrolling="no" title="preview"></iframe></div></div>
 <script>
   var p = new URLSearchParams(location.search).get('p') || '';
-  document.getElementById('f').src = '/bnml-skku-website/' + p;
+  document.getElementById('f').src = '/bnml-skku-website/' + p + '?cb=' + Date.now();
   document.getElementById('t').textContent = '390px viewport · /' + p;
 </script>
 </body>
