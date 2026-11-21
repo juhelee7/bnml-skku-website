@@ -333,7 +333,7 @@ figure{margin:0}
 .card:hover .card-link svg{transform:translateX(3px)}
 
 /* ------------------------------------------------------------ research areas */
-.area-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px;align-items:start}
+.area-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px;align-items:stretch}
 .area{
   display:flex;flex-direction:column;scroll-margin-top:calc(var(--header-h) + 24px);
   background:#fff;border:1px solid var(--line);border-radius:var(--radius-l);
@@ -351,7 +351,7 @@ figure{margin:0}
 .area-body{padding:24px 26px 26px;display:flex;flex-direction:column;gap:10px;flex:1}
 .area-body h3{font-size:20px;margin:0;line-height:1.35}
 .area-body p{margin:0;font-size:14.5px;color:var(--muted);line-height:1.7}
-.area-themes{list-style:none;margin:6px 0 0;padding:14px 0 0;border-top:1px solid var(--line-soft);display:flex;flex-wrap:wrap;gap:8px}
+.area-themes{list-style:none;margin:auto 0 0;padding:14px 0 0;border-top:1px solid var(--line-soft);display:flex;flex-wrap:wrap;gap:8px}
 .area-themes li{
   font-size:12px;font-weight:600;color:var(--green-700);background:var(--green-50, #f1f7f3);
   border:1px solid var(--green-100);border-radius:999px;padding:5px 11px;line-height:1.4;
