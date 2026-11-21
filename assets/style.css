@@ -117,6 +117,7 @@ figure{margin:0}
 .site-header.scrolled .header-inner{min-height:64px}
 .brand{display:flex;align-items:center;gap:16px;min-width:0}
 .brand-link{display:flex;align-items:center}
+.brand-link picture{display:block;line-height:0}
 .brand-link img{height:34px;width:auto}
 .site-header.scrolled .brand-link img{height:31px}
 .school-mark{height:38px;width:38px;border-radius:50%;object-fit:contain;flex:none}
@@ -759,7 +760,15 @@ body.hdr-compact .toolbar{top:64px}
   .topbar{display:none}
   .brand-text,.brand-divider{display:none}
   .brand-link img{height:38px}
-  .menu-toggle{display:inline-flex}
+  /* logo, SKKU seal and the Menu button share one row on phones: the wordmark is
+     sized from the viewport so flex can never squash it into a distorted box */
+  .header-inner{gap:12px}
+  .brand{flex:0 1 auto;min-width:0}
+  .brand-link{min-width:0}
+  .brand-link img,.site-header.scrolled .brand-link img{height:auto;width:min(300px,calc(100vw - 195px))}
+  .header-seal{display:inline-flex;order:2;flex:none;margin-left:0;padding-left:0;border-left:0}
+  .header-seal img,.site-header.scrolled .header-seal img{width:30px;height:30px}
+  .mainnav{order:3;flex:none}
   .mainnav{margin-left:0}
   .menu{
     position:fixed;left:0;right:0;top:var(--header-h);bottom:0;
@@ -857,8 +866,15 @@ body.hdr-compact .toolbar{top:64px}
   .timeline .what{font-size:14.5px}
 }
 
+@media (max-width:480px){
+  .header-inner{gap:10px}
+  .brand-link img,.site-header.scrolled .brand-link img{width:min(226px,calc(100vw - 176px))}
+  .header-seal img,.site-header.scrolled .header-seal img{width:26px;height:26px}
+  .menu-toggle{padding:8px 12px;gap:10px;font-size:13.5px}
+  .menu-toggle .bars{width:16px}
+}
+
 @media (max-width:420px){
-  .brand-link img{height:32px}
   .school-mark{height:38px;width:38px}
   .people-grid{gap:10px}
   .person .role{font-size:11px}
