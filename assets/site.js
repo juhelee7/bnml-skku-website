@@ -11,6 +11,7 @@
       toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
       var label = toggle.querySelector('.label');
       if (label) label.textContent = open ? 'Close' : 'Menu';
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Menu');
       document.body.style.overflow = open ? 'hidden' : '';
     };
     toggle.addEventListener('click', function () {
