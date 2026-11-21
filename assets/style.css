@@ -295,6 +295,21 @@ figure{margin:0}
 .fact.link{display:flex;flex-direction:column;justify-content:center}
 .fact.link:hover{border-color:var(--green-100);box-shadow:var(--shadow-sm)}
 .fact p{margin:0;font-size:13.5px;color:var(--muted)}
+.director{
+  grid-column:span 2;display:flex;gap:18px;align-items:center;
+  background:linear-gradient(135deg,var(--green-900),var(--green-700));
+  border-radius:var(--radius);padding:18px 20px;color:#fff;
+  transition:transform .22s var(--ease),box-shadow .22s;
+}
+.director:hover{transform:translateY(-2px);box-shadow:var(--shadow-md);color:#fff}
+.director-photo{width:78px;height:78px;border-radius:50%;overflow:hidden;flex:none;border:2px solid rgba(255,255,255,.35)}
+.director-photo img{width:100%;height:100%;object-fit:cover;object-position:center 18%}
+.director-body .k{display:block;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.55);font-weight:700}
+.director-body b{display:block;font-size:17px;color:#fff;margin:2px 0 4px;letter-spacing:-.01em}
+.director-body p{margin:0;font-size:12.5px;color:rgba(255,255,255,.72);line-height:1.5}
+.director .more{display:inline-flex;align-items:center;gap:6px;margin-top:8px;font-size:12.5px;font-weight:600;color:#fff}
+.director .more svg{width:13px;height:13px;transition:transform .2s}
+.director:hover .more svg{transform:translateX(3px)}
 
 /* ------------------------------------------------------------------ cards */
 .card-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px}
@@ -641,7 +656,9 @@ body.hdr-compact .toolbar{top:64px}
 /* ------------------------------------------------------------------ footer */
 .site-footer{background:#fff;border-top:1px solid var(--line);padding:56px 0 32px;font-size:13.8px;color:var(--muted)}
 .footer-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1.2fr;gap:40px;margin-bottom:40px}
-.footer-brand img{height:40px;width:auto;margin-bottom:16px}
+.footer-logos{display:flex;align-items:center;gap:16px;margin-bottom:16px}
+.footer-lab{height:38px;width:auto}
+.footer-seal{height:52px;width:52px;border-radius:50%;object-fit:contain}
 .footer-brand p{margin:0 0 6px;line-height:1.7}
 .site-footer h3{font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);margin:0 0 14px;font-weight:700}
 .footer-links{list-style:none;margin:0;padding:0}
