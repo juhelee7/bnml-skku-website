@@ -9,6 +9,8 @@
     var setMenu = function (open) {
       menu.classList.toggle('open', open);
       toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      var label = toggle.querySelector('.label');
+      if (label) label.textContent = open ? 'Close' : 'Menu';
       document.body.style.overflow = open ? 'hidden' : '';
     };
     toggle.addEventListener('click', function () {
