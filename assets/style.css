@@ -263,10 +263,11 @@ figure img{display:block;max-width:100%;height:auto}
 @media (max-width:760px){
   body{background-image:none}
   .site-header{padding:12px 14px 0}
-  .brand{min-height:0;padding-right:0}
-  .brand .lab-logo{width:min(300px,78%);max-width:100%}
-  .brand .school-logo{width:62px;height:62px;right:0;top:2px}
-  .brand-name{margin:8px 0 0;font-size:16px;line-height:1.4}
+  .brand{min-height:0;display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+  .brand>a:first-child{flex:1 1 auto;min-width:0}
+  .brand .lab-logo{width:min(300px,100%);max-width:100%}
+  .brand .school-logo{position:static;width:56px;height:56px;order:2;flex:0 0 56px}
+  .brand-name{flex:1 1 100%;margin:10px 0 0;font-size:16px;line-height:1.4}
 
   .mainnav{margin-top:16px}
   .menu-toggle{display:flex}
@@ -287,7 +288,7 @@ figure img{display:block;max-width:100%;height:auto}
   main{padding:8px 14px 34px}
   .page-title{font-size:19px;margin-bottom:18px;padding:7px 0 6px}
 
-  .home-hero{height:200px}
+  .home-hero{display:none}
   .img-row{flex-direction:column;gap:12px;margin-top:18px}
   .home-photo{margin-top:8px}
 
