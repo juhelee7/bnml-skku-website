@@ -207,7 +207,7 @@ figure{margin:0}
   position:absolute;top:0;right:0;bottom:0;width:52%;z-index:1;
   overflow:hidden;background:var(--green-800);
 }
-.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:center 46%}
+.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:center 72%}
 .hero .wrap{
   position:relative;z-index:2;display:flex;align-items:center;
   padding-top:60px;padding-bottom:60px;
@@ -764,6 +764,19 @@ body.hdr-compact .toolbar{top:64px}
   .pi-hero{grid-template-columns:250px minmax(0,1fr);gap:40px}
 }
 
+/* Below 1200 px the copy column and the photo cannot share one row without
+   cropping the two people at the ends of the group, so the photo becomes a
+   full-width band under the title: full width is always visible that way. */
+@media (max-width:1199px){
+  .hero{display:block;min-height:0}
+  .hero .wrap{padding-top:56px;padding-bottom:50px}
+  .hero-inner{max-width:none}
+  .hero h1{font-size:clamp(27px,3.6vw,38px)}
+  .hero p.lead{max-width:62ch}
+  .hero-photo{position:relative;inset:auto;width:100%;height:auto}
+  .hero-photo img{height:auto;aspect-ratio:2/1;object-position:center 70%}
+}
+
 @media (max-width:960px){
   :root{--header-h:68px}
   .wrap{padding:0 22px}
@@ -803,12 +816,9 @@ body.hdr-compact .toolbar{top:64px}
   .nav-cta{margin:16px 0 0;display:inline-flex !important;border-radius:999px !important;padding:12px 22px !important}
   .caret{display:none}
 
-  .hero{display:block;min-height:0}
-  .hero .wrap{padding-top:52px;padding-bottom:44px}
-  .hero-inner{max-width:none}
+  .hero .wrap{padding-top:48px;padding-bottom:40px}
   .hero h1{font-size:clamp(27px,4.6vw,36px)}
-  .hero-photo{position:relative;inset:auto;width:100%;height:auto}
-  .hero-photo img{height:auto;aspect-ratio:16/9;object-position:center 44%}
+  .hero-photo img{aspect-ratio:16/9;object-position:center 65%}
   .intro-grid,.contact-band .wrap,.pi-hero{grid-template-columns:1fr;gap:34px}
   .card-grid{grid-template-columns:1fr 1fr}
   .patent-grid{grid-template-columns:1fr}
