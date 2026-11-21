@@ -104,7 +104,7 @@ img{max-width:100%}
 .menu>li{position:relative;border-right:1px solid var(--rule)}
 .menu>li>a{
   display:block;
-  padding:6px 36px;
+  padding:6px 34px;
   font-size:18px;
   line-height:28px;
   color:var(--ink);
@@ -209,6 +209,10 @@ figure img{display:block;max-width:100%;height:auto}
 .site-footer p{margin:0}
 
 /* ---------------- responsive ---------------- */
+@media (max-width:1019px){
+  .menu>li>a{padding:6px 18px;font-size:17px}
+}
+
 @media (max-width:1020px){
   .site{max-width:100%;margin-top:0;min-height:100vh}
   .site-header{padding:14px 14px 0}
