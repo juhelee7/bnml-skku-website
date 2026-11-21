@@ -482,7 +482,7 @@ body.hdr-compact .toolbar{top:64px}
 /* ----------------------------------------------------------------- patents */
 .patent-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:8px}
 .patent{
-  background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:22px 24px;
+  background:#fff;border:1px solid var(--line);border-radius:6px;padding:22px 24px;
   display:flex;flex-direction:column;gap:10px;transition:border-color .2s,box-shadow .2s;
 }
 .patent:hover{border-color:var(--green-100);box-shadow:var(--shadow-sm)}
@@ -506,16 +506,16 @@ body.hdr-compact .toolbar{top:64px}
 .group-title .count{font-size:12.5px;color:var(--muted);letter-spacing:0;text-transform:none;font-weight:600}
 .people-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px}
 .person{
-  background:#fff;border:1px solid var(--line);border-radius:var(--radius-l);overflow:hidden;
-  display:flex;flex-direction:column;transition:box-shadow .22s,border-color .22s,transform .22s var(--ease);
+  background:#fff;border:1px solid var(--line);border-radius:6px;overflow:hidden;
+  display:flex;flex-direction:column;transition:box-shadow .22s,border-color .22s;
 }
-.person:hover{box-shadow:var(--shadow-md);border-color:var(--green-100);transform:translateY(-3px)}
+.person:hover{box-shadow:var(--shadow-sm);border-color:var(--green-100)}
 .person-photo{aspect-ratio:4/5;background:var(--green-50);overflow:hidden}
 .person-photo img{width:100%;height:100%;object-fit:cover;object-position:center 10%}
 .person-photo.empty{display:grid;place-items:center;color:var(--green-100);font-size:34px;font-weight:700}
 .person-body{padding:18px 20px 20px;display:flex;flex-direction:column;gap:8px;flex:1}
 .person h3{font-size:15.5px;margin:0;line-height:1.4}
-.person .role{font-size:12.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--green-600)}
+.person .role{font-style:italic;font-size:13px;font-weight:600;letter-spacing:.01em;color:var(--green-600)}
 .person ul{list-style:none;margin:0;padding:0;font-size:13px;color:var(--muted);line-height:1.55}
 .person ul li{margin:0 0 3px}
 .person .mail{
@@ -591,7 +591,7 @@ body.hdr-compact .toolbar{top:64px}
 /* ---------------------------------------------------------------- teaching */
 .course-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
 .course{
-  background:#fff;border:1px solid var(--line);border-radius:var(--radius-l);padding:30px 32px;
+  background:#fff;border:1px solid var(--line);border-radius:6px;padding:26px 28px;
   display:flex;flex-direction:column;gap:12px;transition:border-color .2s,box-shadow .2s;
 }
 .course:hover{border-color:var(--green-100);box-shadow:var(--shadow-sm)}
