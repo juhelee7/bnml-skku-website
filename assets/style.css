@@ -553,11 +553,11 @@ body.hdr-compact .toolbar{top:64px}
 
 /* ---------------------------------------------------------------- gallery */
 .gallery-grid{
-  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;
+  columns:4;column-gap:14px;
 }
 .gallery-item{
-  position:relative;display:block;border:0;padding:0;background:var(--surface);
-  border-radius:12px;overflow:hidden;cursor:zoom-in;aspect-ratio:4/3;
+  position:relative;display:block;width:100%;border:0;padding:0;background:var(--surface);
+  border-radius:12px;overflow:hidden;cursor:zoom-in;margin:0 0 14px;break-inside:avoid;
 }
 .gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .45s var(--ease),filter .45s}
 .gallery-item::after{
@@ -730,7 +730,7 @@ body.hdr-compact .toolbar{top:64px}
   .card-grid{grid-template-columns:1fr 1fr}
   .patent-grid{grid-template-columns:1fr}
   .course-grid{grid-template-columns:1fr}
-  .gallery-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .gallery-grid{columns:3}
   .footer-grid{grid-template-columns:1fr 1fr;gap:30px}
   .news-mini{grid-template-columns:1fr}
   .research-figs{grid-template-columns:1fr;gap:18px}
@@ -769,7 +769,8 @@ body.hdr-compact .toolbar{top:64px}
   .alumni-year{grid-template-columns:1fr;gap:10px;margin-bottom:34px}
   .alumni-year h2{padding-top:0;font-size:15px}
   .alumni-list li{grid-template-columns:1fr;gap:2px;padding:12px 0}
-  .gallery-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .gallery-grid{columns:2;column-gap:10px}
+  .gallery-item{margin-bottom:10px}
   .gallery-item .zoom{opacity:1;transform:none;width:26px;height:26px;right:8px;bottom:8px}
   .latest{grid-template-columns:minmax(0,1fr) auto;gap:10px 14px}
   .latest .yr{grid-column:1;font-size:12px}
