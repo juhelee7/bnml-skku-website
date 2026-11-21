@@ -825,7 +825,6 @@ body.hdr-compact .toolbar{top:64px}
   .person-body{padding:14px 15px 16px}
   .person h3{font-size:14px}
   .person ul{font-size:12px}
-  .person ul li.interest{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
   .topic-list{grid-template-columns:1fr}
   .page-head .wrap{padding-top:34px;padding-bottom:36px}
   .page-head .head-meta{gap:20px}
