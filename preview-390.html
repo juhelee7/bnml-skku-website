@@ -8,27 +8,28 @@
   body{margin:0;background:#d7dbe0;font:12px/1.4 system-ui,sans-serif;color:#334}
   .note{padding:8px 12px}
   .phone{width:390px;margin:12px auto;background:#fff;box-shadow:0 0 0 1px #b9c0c8}
-  iframe{width:390px;height:420px;border:0;display:block}
+  iframe{width:390px;height:130px;border:0;display:block}
   .tag{margin:16px auto 0;width:390px;font-weight:700}
+  #res{height:900px}
 </style>
 </head>
 <body>
 <p class="note">Temporary 390 px preview harness — deleted after the check.</p>
 
-<p class="tag">1 · light header (390px)</p>
-<div class="phone"><iframe id="light" src="./?v=9"></iframe></div>
+<p class="tag">1 &middot; light header (390px)</p>
+<div class="phone"><iframe id="light" src="./?v=10"></iframe></div>
 
-<p class="tag">2 · dark header, simulated (390px)</p>
-<div class="phone"><iframe id="dark" src="./?v=9"></iframe></div>
+<p class="tag">2 &middot; dark header, simulated (390px)</p>
+<div class="phone"><iframe id="dark" src="./?v=10"></iframe></div>
 
-<p class="tag">3 · researchers, research fields removed (390px)</p>
-<div class="phone"><iframe id="res" src="researchers/?v=9"></iframe></div>
+<p class="tag">3 &middot; researchers, research fields removed (390px)</p>
+<div class="phone"><iframe id="res" src="researchers/?v=10"></iframe></div>
 
 <script>
-  // dark header simulation: Samsung Internet dark mode repaints the header dark while
-  // leaving images alone, which is what this shows (the dark-mode logo variant is used).
+  // dark header simulation: Samsung Internet dark mode repaints the bar dark while leaving
+  // images alone, so this shows the dark-mode wordmark on a dark header.
   document.getElementById('dark').addEventListener('load', function () {
-    var d = this.contentDocument, w = this.contentWindow;
+    var d = this.contentDocument;
     if (!d) return;
     var st = d.createElement('style');
     st.textContent = '.site-header{background:#1f1f1f!important;border-bottom-color:#333!important}'
@@ -37,6 +38,13 @@
     d.head.appendChild(st);
     var img = d.querySelector('.brand img');
     if (img) img.src = 'assets/bnml-logo-dark.png';
+  });
+
+  document.getElementById('res').addEventListener('load', function () {
+    var d = this.contentDocument;
+    if (!d) return;
+    var g = d.querySelector('.people-group');
+    if (g) this.contentWindow.scrollTo(0, g.offsetTop - 12);
   });
 </script>
 </body>
