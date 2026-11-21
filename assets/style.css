@@ -264,8 +264,8 @@ figure img{display:block;max-width:100%;height:auto}
   body{background-image:none}
   .site-header{padding:12px 14px 0}
   .brand{min-height:0;display:flex;flex-wrap:wrap;align-items:center;gap:6px}
-  .brand>a:first-child{flex:0 1 auto;min-width:0}
-  .brand .lab-logo{width:min(230px,62%);max-width:100%}
+  .brand>a:first-child{flex:0 0 auto;width:min(230px,62%);min-width:0}
+  .brand .lab-logo{width:100%;max-width:100%}
   .brand .school-logo{position:static;width:56px;height:56px;order:2;flex:0 0 56px}
   .brand-name{flex:1 1 100%;margin:10px 0 0;font-size:16px;line-height:1.4}
 
