@@ -312,6 +312,7 @@ figure{margin:0}
 
 /* ------------------------------------------------------------------ cards */
 .card-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px}
+.card-grid.four{grid-template-columns:repeat(2,minmax(0,1fr))}
 .card{
   display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);
   border-radius:var(--radius-l);overflow:hidden;box-shadow:var(--shadow-xs);
@@ -330,6 +331,31 @@ figure{margin:0}
 .card-link{margin-top:auto;padding-top:14px;font-size:14px;font-weight:600;display:inline-flex;align-items:center;gap:7px}
 .card-link svg{width:14px;height:14px;transition:transform .2s}
 .card:hover .card-link svg{transform:translateX(3px)}
+
+/* ------------------------------------------------------------ research areas */
+.area-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px;align-items:start}
+.area{
+  display:flex;flex-direction:column;scroll-margin-top:calc(var(--header-h) + 24px);
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius-l);
+  overflow:hidden;box-shadow:var(--shadow-xs);
+  transition:transform .25s var(--ease),box-shadow .25s,border-color .25s;
+}
+.area:hover{transform:translateY(-3px);box-shadow:var(--shadow-md);border-color:var(--green-100)}
+.area-media{
+  margin:0;border-radius:0;background:#fff;aspect-ratio:3/2;
+  border-bottom:1px solid var(--line-soft);
+}
+.area-media img{width:100%;height:100%;object-fit:cover;object-position:center}
+.area-media::after{display:none}
+.area-media .zoom{opacity:1;transform:none;right:12px;bottom:12px}
+.area-body{padding:24px 26px 26px;display:flex;flex-direction:column;gap:10px;flex:1}
+.area-body h3{font-size:20px;margin:0;line-height:1.35}
+.area-body p{margin:0;font-size:14.5px;color:var(--muted);line-height:1.7}
+.area-themes{list-style:none;margin:6px 0 0;padding:14px 0 0;border-top:1px solid var(--line-soft);display:flex;flex-wrap:wrap;gap:8px}
+.area-themes li{
+  font-size:12px;font-weight:600;color:var(--green-700);background:var(--green-50, #f1f7f3);
+  border:1px solid var(--green-100);border-radius:999px;padding:5px 11px;line-height:1.4;
+}
 
 /* ----------------------------------------------------------- publications */
 .toolbar{
@@ -735,6 +761,8 @@ body.hdr-compact .toolbar{top:64px}
   .news-mini{grid-template-columns:1fr}
   .research-figs{grid-template-columns:1fr;gap:18px}
   .research-fig .gallery-item img{max-height:none}
+  .area-grid{grid-template-columns:1fr;gap:20px}
+  .area:hover{transform:none}
   .award-list{grid-template-columns:1fr}
   .pi-photo{max-width:280px}
   .toolbar{top:var(--header-h)}
