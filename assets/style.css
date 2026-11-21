@@ -210,10 +210,6 @@ figure{margin:0}
   background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.055) 0 1px,transparent 1px 16px);
   pointer-events:none;
 }
-.lab-name{
-  font-style:italic;font-weight:600;font-size:clamp(15px,1.35vw,18.5px);
-  letter-spacing:.005em;color:#cbe6d7;margin:0 0 14px;
-}
 .eyebrow{
   display:inline-flex;align-items:center;gap:12px;
   font-style:italic;font-size:15px;font-weight:600;letter-spacing:.005em;
