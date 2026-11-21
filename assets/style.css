@@ -364,6 +364,7 @@ body.hdr-compact .toolbar{top:64px}
 .chip{
   font:inherit;font-size:13.5px;font-weight:600;padding:9px 15px;border-radius:999px;cursor:pointer;
   background:#fff;border:1px solid var(--line);color:var(--body);transition:all .18s;
+  flex:none;white-space:nowrap;
 }
 .chip:hover{border-color:var(--green-600);color:var(--green-700)}
 .chip[aria-pressed="true"]{background:var(--green-700);border-color:var(--green-700);color:#fff}
@@ -464,7 +465,7 @@ body.hdr-compact .toolbar{top:64px}
 }
 .person:hover{box-shadow:var(--shadow-md);border-color:var(--green-100);transform:translateY(-3px)}
 .person-photo{aspect-ratio:4/5;background:var(--green-50);overflow:hidden}
-.person-photo img{width:100%;height:100%;object-fit:cover;object-position:center 22%}
+.person-photo img{width:100%;height:100%;object-fit:cover;object-position:center 10%}
 .person-photo.empty{display:grid;place-items:center;color:var(--green-100);font-size:34px;font-weight:700}
 .person-body{padding:18px 20px 20px;display:flex;flex-direction:column;gap:8px;flex:1}
 .person h3{font-size:15.5px;margin:0;line-height:1.4}
@@ -485,7 +486,7 @@ body.hdr-compact .toolbar{top:64px}
 .pi-name{font-size:clamp(26px,3vw,36px);margin:0 0 6px}
 .pi-role{font-size:15px;color:var(--muted);margin:0 0 4px}
 .pi-role strong{color:var(--ink)}
-.pi-contact{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:28px 0 0}
+.pi-contact{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:28px 0 0}
 .contact-item{
   display:flex;gap:12px;padding:16px 18px;background:var(--surface);border:1px solid var(--line-soft);
   border-radius:var(--radius);font-size:13.8px;line-height:1.55;
@@ -584,6 +585,7 @@ body.hdr-compact .toolbar{top:64px}
   max-width:100%;max-height:78vh;width:auto;height:auto;border-radius:10px;
   box-shadow:0 30px 80px -30px rgba(0,0,0,.8);
 }
+.lightbox figcaption:empty{display:none}
 .lightbox figcaption{color:rgba(255,255,255,.72);font-size:13px;letter-spacing:.04em}
 .lb-btn{
   position:absolute;top:50%;transform:translateY(-50%);
@@ -781,6 +783,10 @@ body.hdr-compact .toolbar{top:64px}
   .toolbar{padding:12px 0}
   .toolbar-inner{gap:8px}
   .search{flex:1 1 100%}
+  .chips{order:3;width:100%;flex-wrap:nowrap;overflow-x:auto;padding-bottom:4px;scrollbar-width:none}
+  .chips::-webkit-scrollbar{display:none}
+  .select-wrap{order:2}
+  .pi-contact{grid-template-columns:1fr}
   .result-count{margin-left:0;flex:1 1 100%}
   .jumpbar{padding-top:14px}
   .lb-prev{left:8px}.lb-next{right:8px}
