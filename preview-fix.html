@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Review-fix preview harness</title>
+<style>
+  body{margin:0;background:#d7dbe0;font:12px/1.4 system-ui,sans-serif;color:#334}
+  .note{padding:10px 14px;background:#fff;border-bottom:1px solid #b9c0c8}
+  .phone{width:390px;margin:14px auto;background:#fff;box-shadow:0 0 0 1px #b9c0c8;overflow:hidden}
+  .wide{width:1024px;margin:14px auto;background:#fff;box-shadow:0 0 0 1px #b9c0c8;overflow:hidden}
+  iframe{border:0;display:block}
+  .tag{margin:18px auto 0;width:390px;font-weight:700}
+  .tag.w{width:1024px}
+</style>
+</head>
+<body>
+<p class="note">Temporary preview harness for the review fixes — removed after the check.</p>
+
+<p class="tag" id="t1">1 · home hero + welcome, 390 px</p>
+<div class="phone"><iframe id="h390" src="./?v=review1" width="390" height="1000"></iframe></div>
+
+<p class="tag" id="t2">2 · home latest publications, 390 px</p>
+<div class="phone"><iframe id="p390" src="./?v=review1" width="390" height="760"></iframe></div>
+
+<p class="tag w" id="t3">3 · home hero, 1024 px</p>
+<div class="wide"><iframe id="d1024" src="./?v=review1" width="1024" height="640"></iframe></div>
+
+<script>
+  function ready(id, fn){
+    var f=document.getElementById(id);
+    f.addEventListener('load', function(){
+      var d=null; try{d=f.contentDocument;}catch(e){}
+      if(d) fn(d,f.contentWindow);
+    });
+  }
+  ready('p390', function(d,w){
+    var el=d.querySelector('.latest-list');
+    if(el) w.scrollTo(0, el.getBoundingClientRect().top + w.scrollY - 90);
+  });
+  ready('d1024', function(d,w){});
+</script>
+</body>
+</html>
