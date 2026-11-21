@@ -45,7 +45,7 @@ a{color:inherit}
 img{max-width:100%}
 
 .site{
-  max-width:calc(var(--content) + 2px);
+  max-width:var(--content);
   margin:5px auto 0;
   background:#fff;
   display:flex;
@@ -54,10 +54,17 @@ img{max-width:100%}
 }
 
 /* ---------------- header ---------------- */
-.site-header{padding:15px 5px 0}
+.site-header{padding:10px 5px 0}
+
+.skip-link{
+  position:absolute;left:-9999px;top:0;
+  z-index:100;padding:8px 12px;background:#fff;color:var(--ink);
+}
+.skip-link:focus{left:8px;top:8px}
 
 .brand{position:relative;min-height:116px}
 
+.brand>a:first-child{display:block;line-height:0;font-size:0}
 .brand .lab-logo{display:block;width:405px;max-width:calc(100% - 130px);height:auto;border:0}
 
 .brand .school-logo{
@@ -75,7 +82,7 @@ img{max-width:100%}
 .brand-name a:hover{text-decoration:underline}
 
 /* ---------------- navigation ---------------- */
-.mainnav{margin-top:46px;position:relative}
+.mainnav{margin-top:50px;position:relative}
 
 .menu-toggle{
   display:none;
