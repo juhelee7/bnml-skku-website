@@ -104,7 +104,7 @@ img{max-width:100%}
 .menu>li{position:relative;border-right:1px solid var(--rule)}
 .menu>li>a{
   display:block;
-  padding:6px 24px;
+  padding:6px 36px;
   font-size:18px;
   line-height:28px;
   color:var(--ink);
