@@ -768,6 +768,7 @@ body.hdr-compact .toolbar{top:64px}
   .brand-link img,.site-header.scrolled .brand-link img{height:auto;width:min(300px,calc(100vw - 195px))}
   .header-seal{display:inline-flex;order:2;flex:none;margin-left:0;padding-left:0;border-left:0}
   .header-seal img,.site-header.scrolled .header-seal img{width:30px;height:30px}
+  .menu-toggle{display:inline-flex}
   .mainnav{order:3;flex:none}
   .mainnav{margin-left:0}
   .menu{
