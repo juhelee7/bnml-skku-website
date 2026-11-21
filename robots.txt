@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://juhelee7.github.io/bnml-website/sitemap.xml
+Sitemap: https://juhelee7.github.io/bnml-skku-website/sitemap.xml

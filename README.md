@@ -3,7 +3,7 @@
 성균관대학교 신소재공학부 **Biological & Nanoscale Materials Laboratory (BNML)** 홈페이지의 정적(static) 버전입니다.
 기존 Wix 사이트(`https://www.bionanomaterials.org`)의 디자인과 내용을 그대로 옮겨 **GitHub Pages**(무료 호스팅)에서 운영합니다.
 
-- 미리보기: <https://juhelee7.github.io/bnml-website/>
+- 미리보기: <https://juhelee7.github.io/bnml-skku-website/>
 - 사용 도메인(연결 후): `https://www.bionanomaterials.org`
 
 ## 페이지
