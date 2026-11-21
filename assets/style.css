@@ -122,7 +122,7 @@ figure{margin:0}
 .site-header.scrolled .brand-link img{height:31px}
 .school-mark{height:38px;width:38px;border-radius:50%;object-fit:contain;flex:none}
 .brand-divider{width:1px;height:34px;background:var(--line);flex:none}
-.brand-text{font-size:11.5px;line-height:1.3;color:var(--muted);letter-spacing:.01em;max-width:196px;margin:0}
+.school-link{display:inline-flex;align-items:center}
 .brand-text b{display:block;color:var(--ink);font-weight:600;font-size:12px}
 .brand-text a{color:var(--muted)}
 .brand-text a:hover{color:var(--green-700)}
@@ -185,7 +185,7 @@ figure{margin:0}
   color:#fff;isolation:isolate;
 }
 .hero-media{position:absolute;inset:0;z-index:-2}
-.hero-media img{width:100%;height:100%;object-fit:cover;object-position:center 38%}
+.hero-media img{width:100%;height:100%;object-fit:cover;object-position:center 58%}
 .hero::after{
   content:"";position:absolute;inset:0;z-index:-1;
   background:
@@ -204,8 +204,8 @@ figure{margin:0}
 .eyebrow::before{content:"";width:28px;height:2px;background:currentColor;border-radius:2px}
 .hero .eyebrow{color:#d8c9a4}
 .hero h1{
-  color:#fff;font-size:clamp(30px,4.2vw,54px);line-height:1.1;letter-spacing:-.02em;
-  margin:0 0 20px;max-width:19ch;font-weight:700;
+  color:#fff;font-size:clamp(30px,3.9vw,50px);line-height:1.12;letter-spacing:-.02em;
+  margin:0 0 20px;max-width:23ch;font-weight:700;
 }
 .hero p.lead{
   font-size:clamp(15px,1.25vw,18px);line-height:1.65;color:rgba(255,255,255,.86);
@@ -304,7 +304,7 @@ figure{margin:0}
   transition:transform .25s var(--ease),box-shadow .25s,border-color .25s;
 }
 .card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);border-color:var(--green-100)}
-.card-media{position:relative;aspect-ratio:16/10;background:var(--green-50);overflow:hidden}
+.card-media{position:relative;aspect-ratio:3/2;background:#fff;overflow:hidden;border-bottom:1px solid var(--line-soft)}
 .card-media img{width:100%;height:100%;object-fit:cover;transition:transform .5s var(--ease)}
 .card:hover .card-media img{transform:scale(1.04)}
 .card-body{padding:26px 26px 28px;display:flex;flex-direction:column;gap:10px;flex:1}
