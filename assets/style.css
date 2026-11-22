@@ -571,9 +571,9 @@ body.hdr-compact .toolbar{top:64px}
 .timeline .detail .label{font-style:italic;color:var(--green-700)}
 .award-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 26px}
 .award-list li{
-  display:flex;gap:12px;font-size:14px;color:var(--body);padding:8px 0;border-bottom:1px dashed var(--line-soft);
+  display:flex;gap:12px;font-size:15px;color:var(--body);line-height:1.5;padding:8px 0;border-bottom:1px dashed var(--line-soft);
 }
-.award-list .yr{font-size:12.5px;font-weight:700;color:var(--green-700);min-width:52px;font-variant-numeric:tabular-nums}
+.award-list .yr{font-size:12.5px;font-weight:700;color:var(--green-700);line-height:1.5;letter-spacing:.04em;min-width:52px;font-variant-numeric:tabular-nums}
 
 /* ------------------------------------------------------------------ alumni */
 .alumni-year{margin:0 0 44px;display:grid;grid-template-columns:110px minmax(0,1fr);gap:28px}
@@ -895,7 +895,7 @@ body.hdr-compact .toolbar{top:64px}
   .lb-btn{width:40px;height:40px}
   .lb-close{top:10px;right:10px}
   .lightbox img{max-height:70vh}
-  .award-list li{font-size:13.5px}
+  .award-list li{font-size:14.5px}
   .timeline .what{font-size:14.5px}
 }
 
