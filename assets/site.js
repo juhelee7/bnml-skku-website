@@ -66,18 +66,21 @@
   /* ------------------------------------------------------- list filtering */
   function initFilter(root) {
     var search = root.querySelector('[data-filter-search]');
-    var year = root.querySelector('[data-filter-year]');
+    var yearSelect = root.querySelector('[data-filter-year]');
     var chips = [].slice.call(root.querySelectorAll('[data-filter-status]'));
     var items = [].slice.call(root.querySelectorAll('[data-item]'));
     var count = root.querySelector('[data-filter-count]');
     var empty = root.querySelector('[data-empty]');
     var jumps = [].slice.call(root.querySelectorAll('[data-jump]'));
+    /* the year lives here, not in a <select>: the publications page keeps only the
+       year buttons, so nothing else has to be present for them to work */
+    var year = yearSelect ? yearSelect.value : '';
     var status = 'all', frame = null;
 
     function apply() {
       frame = null;
       var q = search ? search.value.trim().toLowerCase() : '';
-      var y = year ? year.value : '';
+      var y = year;
       var shown = 0;
       items.forEach(function (el) {
         var okQ = !q || (el.getAttribute('data-text') || '').indexOf(q) !== -1;
@@ -91,7 +94,10 @@
       if (count) count.textContent = shown;
       if (empty) empty.classList.toggle('show', shown === 0);
       jumps.forEach(function (j) {
-        j.classList.toggle('active', j.getAttribute('data-jump') === y);
+        var t = j.getAttribute('data-jump') || 'all';
+        var on = (t === 'all' ? '' : t) === year;
+        j.classList.toggle('active', on);
+        j.setAttribute('aria-pressed', on ? 'true' : 'false');
       });
     }
 
@@ -101,7 +107,10 @@
     }
 
     if (search) search.addEventListener('input', queue);
-    if (year) year.addEventListener('change', apply);
+    if (yearSelect) yearSelect.addEventListener('change', function () {
+      year = yearSelect.value;
+      apply();
+    });
     chips.forEach(function (btn) {
       btn.addEventListener('click', function () {
         status = btn.getAttribute('data-filter-status');
@@ -113,9 +122,9 @@
     });
     jumps.forEach(function (j) {
       j.addEventListener('click', function () {
-        if (!year) return;
-        var target = j.getAttribute('data-jump');
-        year.value = year.value === target ? '' : target;
+        var target = j.getAttribute('data-jump') || 'all';
+        year = (target === 'all' || target === year) ? '' : target;
+        if (yearSelect) yearSelect.value = year;
         apply();
         var list = root.querySelector('.pub-list, .patent-grid');
         if (list) {
