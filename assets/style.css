@@ -573,7 +573,7 @@ body.hdr-compact .toolbar{top:64px}
 .award-list li{
   display:flex;gap:12px;font-size:15px;color:var(--body);line-height:1.5;padding:8px 0;border-bottom:1px dashed var(--line-soft);
 }
-.award-list .yr{font-size:12.5px;font-weight:700;color:var(--green-700);line-height:1.5;letter-spacing:.04em;min-width:52px;font-variant-numeric:tabular-nums}
+.award-list .yr{font-size:12.5px;font-weight:700;color:var(--green-700);line-height:1.5;letter-spacing:.04em;min-width:84px;white-space:nowrap;font-variant-numeric:tabular-nums}
 
 /* ------------------------------------------------------------------ alumni */
 .alumni-year{margin:0 0 44px;display:grid;grid-template-columns:110px minmax(0,1fr);gap:28px}
