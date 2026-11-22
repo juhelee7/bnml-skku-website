@@ -45,6 +45,7 @@
   --ink:#0c1210;
   --body:#333b36;
   --muted:#64748b;
+  --faint:#b6bfc9;
   --line:#e2e8f0;
   --line-soft:#edf2f7;
   --surface:#f8fafc;
@@ -496,6 +497,8 @@ body.hdr-compact .toolbar{top:64px}
 .patent dl{display:grid;grid-template-columns:auto 1fr;gap:2px 12px;margin:0;font-size:12.8px}
 .patent dt{color:var(--muted);white-space:nowrap}
 .patent dd{margin:0;color:var(--body);font-variant-numeric:tabular-nums}
+/* a quiet index mark that sits at the end of some application lines */
+.patent dd .nx{float:right;margin-left:10px;font-size:10.5px;font-weight:400;letter-spacing:.02em;color:var(--faint);line-height:1.6}
 .patent.is-hidden{display:none}
 
 /* ------------------------------------------------------------------ people */
@@ -1027,6 +1030,7 @@ body.hdr-compact .toolbar{top:64px}
     --ink:#e9f1ec;
     --body:#bcc9c2;
     --muted:#8d9d95;
+    --faint:#5b6c62;
     --line:#23342c;
     --line-soft:#1a2620;
     --surface:#0e1713;
