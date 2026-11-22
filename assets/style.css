@@ -686,6 +686,22 @@ body.hdr-compact .toolbar{top:64px}
   .gal-year-head{color:var(--ink)}
 }
 
+/* a research area card may hold several figures: it crossfades between them on
+   the same 3:2 media box the site already uses, with a badge and dots readable
+   over a white figure */
+.area-media .gal-badge{background:rgba(6,26,18,.66)}
+.area-media .gal-dots{
+  left:12px;bottom:12px;transform:none;
+  background:rgba(255,255,255,.8);padding:4px 8px;border-radius:999px;
+  box-shadow:0 1px 6px rgba(6,26,18,.18);
+}
+.area-media .gal-dots i{background:rgba(6,42,28,.3)}
+.area-media .gal-dots i.is-on{background:rgba(6,42,28,.85)}
+@media (prefers-color-scheme: dark){
+  .area-media .gal-dots{background:rgba(255,255,255,.14)}
+  .area-media .gal-dots i{background:rgba(255,255,255,.4)}
+  .area-media .gal-dots i.is-on{background:#fff}
+}
 .lightbox{
   position:fixed;inset:0;z-index:200;display:none;place-items:center;
   background:rgba(4,20,13,.94);backdrop-filter:blur(6px);padding:24px;

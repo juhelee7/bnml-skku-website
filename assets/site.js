@@ -168,10 +168,12 @@
       card._offset = frames.length;
       if (data && data.length) {
         data.forEach(function (f, i) {
+          /* a research figure carries its own caption in f.c; a gallery card
+             has none, so its title and date carry over and the position is added */
           frames.push({
             full: f.s,
             alt: f.a || caption,
-            caption: caption + (data.length > 1 ? ' · ' + (i + 1) + '/' + data.length : '')
+            caption: f.c || [caption, data.length > 1 ? (i + 1) + '/' + data.length : ''].filter(Boolean).join(' · ')
           });
         });
       } else {
