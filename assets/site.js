@@ -142,66 +142,158 @@
   }
   [].slice.call(document.querySelectorAll('[data-filter]')).forEach(initFilter);
 
-  /* ------------------------------------------------------------- lightbox */
-  var lb = document.querySelector('.lightbox');
-  var triggers = [].slice.call(document.querySelectorAll('[data-gallery-item]'));
-  if (lb && triggers.length) {
-    var lbImg = lb.querySelector('img');
-    var lbCap = lb.querySelector('figcaption');
-    var lbCount = lb.querySelector('.lb-count');
-    var index = 0;
-    var lastFocus = null;
+  /* --------------------------------------------- gallery cards & lightbox
+     A gallery card may hold several photos of the same event: they crossfade
+     in place (badge and dots show where we are) and pause while the pointer or
+     the keyboard is on the card, or while the card is off screen. The viewer
+     walks every photo of every card in page order, starting from the photo the
+     card is showing. */
+  var cards = [].slice.call(document.querySelectorAll('[data-gallery-item]'));
+  if (cards.length) {
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var INTERVAL = 3400;
+    var frames = [];
 
-    function render() {
-      var el = triggers[index];
-      var full = el.getAttribute('data-full');
-      var cap = el.getAttribute('data-caption') || '';
-      lbImg.src = full;
-      lbImg.alt = el.querySelector('img') ? el.querySelector('img').alt : cap;
-      if (lbCap) lbCap.textContent = cap;
-      if (lbCount) lbCount.textContent = (index + 1) + ' / ' + triggers.length;
+    cards.forEach(function (card) {
+      var imgs = [].slice.call(card.querySelectorAll('.gal-frame'));
+      var data = null;
+      var raw = card.getAttribute('data-frames');
+      if (raw) { try { data = JSON.parse(raw); } catch (e) { data = null; } }
+      var capEl = card.closest('figure') ? card.closest('figure').querySelector('.gal-cap') : null;
+      var capTitle = capEl && capEl.querySelector('.gal-title') ? capEl.querySelector('.gal-title').textContent : '';
+      var capDate = capEl && capEl.querySelector('.gal-date') ? capEl.querySelector('.gal-date').textContent : '';
+      var caption = [capTitle, capDate].filter(Boolean).join(' · ');
+      card._imgs = imgs;
+      card._cur = 0;
+      card._offset = frames.length;
+      if (data && data.length) {
+        data.forEach(function (f, i) {
+          frames.push({
+            full: f.s,
+            alt: f.a || caption,
+            caption: caption + (data.length > 1 ? ' · ' + (i + 1) + '/' + data.length : '')
+          });
+        });
+      } else {
+        var own = card.querySelector('img');
+        frames.push({
+          full: card.getAttribute('data-full') || (own ? own.src : ''),
+          alt: own ? own.alt : caption,
+          caption: card.getAttribute('data-caption') || caption
+        });
+      }
+      if (imgs.length > 1) {
+        card._timer = null;
+        card._visible = false;
+        card.addEventListener('pointerenter', function () { stopCard(card); });
+        card.addEventListener('pointerleave', function () { maybeStart(card); });
+        card.addEventListener('focusin', function () { stopCard(card); });
+        card.addEventListener('focusout', function () { maybeStart(card); });
+        if ('IntersectionObserver' in window) {
+          var co = new IntersectionObserver(function (entries) {
+            entries.forEach(function (en) {
+              card._visible = en.isIntersecting;
+              if (en.isIntersecting) maybeStart(card); else stopCard(card);
+            });
+          }, { threshold: 0.25 });
+          co.observe(card);
+        } else {
+          card._visible = true;
+          maybeStart(card);
+        }
+      }
+    });
+
+    function setFrame(card, i) {
+      var imgs = card._imgs;
+      if (!imgs || !imgs.length) return;
+      var n = imgs.length;
+      i = ((i % n) + n) % n;
+      card._cur = i;
+      imgs.forEach(function (im, k) { im.classList.toggle('is-active', k === i); });
+      var badge = card.querySelector('.gal-badge');
+      if (badge) badge.textContent = (i + 1) + '/' + n;
+      var dots = card.querySelectorAll('.gal-dots i');
+      [].forEach.call(dots, function (d, k) { d.classList.toggle('is-on', k === i); });
     }
-    function open(i) {
-      index = i;
-      lastFocus = document.activeElement;
-      render();
-      lb.classList.add('open');
-      lb.setAttribute('aria-hidden', 'false');
-      document.body.style.overflow = 'hidden';
-      var close = lb.querySelector('.lb-close');
-      if (close) close.focus();
+
+    function stopCard(card) {
+      if (card._timer) { clearInterval(card._timer); card._timer = null; }
     }
-    function close() {
-      lb.classList.remove('open');
-      lb.setAttribute('aria-hidden', 'true');
-      document.body.style.overflow = '';
-      lbImg.removeAttribute('src');
-      if (lastFocus) lastFocus.focus();
+
+    function maybeStart(card) {
+      if (reduce || !card._visible || card._timer || !card._imgs || card._imgs.length < 2) return;
+      if (lb && lb.classList.contains('open')) return;
+      if (document.hidden) return;
+      card._timer = setInterval(function () { setFrame(card, card._cur + 1); }, INTERVAL + Math.random() * 500);
     }
-    function step(d) {
-      index = (index + d + triggers.length) % triggers.length;
-      render();
-    }
-    triggers.forEach(function (el, i) {
-      el.addEventListener('click', function (e) {
-        e.preventDefault();
-        open(i);
+
+    var lb = document.querySelector('.lightbox');
+    if (lb) {
+      var lbImg = lb.querySelector('img');
+      var lbCap = lb.querySelector('figcaption');
+      var lbCount = lb.querySelector('.lb-count');
+      var index = 0;
+      var lastFocus = null;
+
+      var render = function () {
+        var f = frames[index];
+        if (!f) return;
+        lbImg.src = f.full;
+        lbImg.alt = f.alt;
+        if (lbCap) lbCap.textContent = f.caption;
+        if (lbCount) lbCount.textContent = (index + 1) + ' / ' + frames.length;
+      };
+      var open = function (i) {
+        index = i;
+        lastFocus = document.activeElement;
+        render();
+        lb.classList.add('open');
+        lb.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        cards.forEach(stopCard);
+        var close = lb.querySelector('.lb-close');
+        if (close) close.focus();
+      };
+      var close = function () {
+        lb.classList.remove('open');
+        lb.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        lbImg.removeAttribute('src');
+        if (lastFocus) lastFocus.focus();
+        cards.forEach(maybeStart);
+      };
+      var step = function (d) {
+        index = (index + d + frames.length) % frames.length;
+        render();
+      };
+
+      cards.forEach(function (card) {
+        card.addEventListener('click', function (e) {
+          e.preventDefault();
+          open(card._offset + (card._cur || 0));
+        });
       });
-    });
-    lb.addEventListener('click', function (e) {
-      if (e.target === lb) close();
-    });
-    var prev = lb.querySelector('.lb-prev');
-    var next = lb.querySelector('.lb-next');
-    var closeBtn = lb.querySelector('.lb-close');
-    if (prev) prev.addEventListener('click', function () { step(-1); });
-    if (next) next.addEventListener('click', function () { step(1); });
-    if (closeBtn) closeBtn.addEventListener('click', close);
-    document.addEventListener('keydown', function (e) {
-      if (!lb.classList.contains('open')) return;
-      if (e.key === 'Escape') close();
-      else if (e.key === 'ArrowLeft') step(-1);
-      else if (e.key === 'ArrowRight') step(1);
-    });
+
+      lb.addEventListener('click', function (e) {
+        if (e.target === lb) close();
+      });
+      var prev = lb.querySelector('.lb-prev');
+      var next = lb.querySelector('.lb-next');
+      var closeBtn = lb.querySelector('.lb-close');
+      if (prev) prev.addEventListener('click', function () { step(-1); });
+      if (next) next.addEventListener('click', function () { step(1); });
+      if (closeBtn) closeBtn.addEventListener('click', close);
+      document.addEventListener('keydown', function (e) {
+        if (!lb.classList.contains('open')) return;
+        if (e.key === 'Escape') close();
+        else if (e.key === 'ArrowLeft') step(-1);
+        else if (e.key === 'ArrowRight') step(1);
+      });
+      document.addEventListener('visibilitychange', function () {
+        if (document.hidden) cards.forEach(stopCard);
+        else cards.forEach(maybeStart);
+      });
+    }
   }
 })();

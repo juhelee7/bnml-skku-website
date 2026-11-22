@@ -616,27 +616,75 @@ body.hdr-compact .toolbar{top:64px}
 .course p{margin:0;font-size:14.5px;color:var(--muted);line-height:1.75}
 
 /* ---------------------------------------------------------------- gallery */
-.gallery-grid{
-  columns:3;column-gap:16px;
+/* Year sections from newest to oldest. One grid per year: three columns on the
+   desktop, two on the tablet, one on the phone. Cards are cropped to fill their
+   box (object-fit: cover), so no white matte or burned-in caption ever shows;
+   the event name and month are HTML text under each photo. */
+.gal-jump-wrap{padding-top:26px}
+.gal-jump{display:flex;flex-wrap:wrap;gap:6px;padding:0 0 18px;border-bottom:1px solid var(--line)}
+.gal-jump a{
+  font-size:13px;font-weight:600;letter-spacing:.02em;color:var(--muted);
+  padding:5px 12px;border:1px solid transparent;border-radius:999px;transition:color .18s,background .18s,border-color .18s;
 }
+.gal-jump a:hover{color:var(--link);background:var(--green-50);border-color:var(--green-100)}
+.gal-year{padding:52px 0 0;scroll-margin-top:calc(var(--header-h) + 18px)}
+.gal-year:last-of-type{padding-bottom:64px}
+.gal-year-head{display:flex;align-items:center;gap:16px;margin:0 0 20px;font-size:clamp(19px,2.1vw,25px);letter-spacing:-.01em}
+.gal-year-num{font-variant-numeric:tabular-nums}
+.gal-year-rule{flex:1;height:1px;background:var(--line)}
+
+.gallery-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px 18px;grid-auto-flow:dense}
+.gallery-card{margin:0;display:flex;flex-direction:column;gap:9px;min-width:0}
+.gallery-card.is-feature{grid-column:span 2;grid-row:span 2}
+.gallery-card.is-tall{grid-row:span 2}
+.gallery-card.is-wide{grid-column:span 3;grid-row:span 2}
 .gallery-item{
   position:relative;display:block;width:100%;border:0;padding:0;background:var(--surface);
-  border-radius:12px;overflow:hidden;cursor:zoom-in;margin:0 0 14px;break-inside:avoid;
+  border-radius:12px;overflow:hidden;cursor:zoom-in;aspect-ratio:3/2;
 }
-.gallery-item img{width:100%;height:auto;display:block;object-fit:cover;transition:transform .45s var(--ease),filter .45s}
+/* a photo that spans two rows keeps a natural ratio as its floor and then grows
+   into whatever height its two rows come to, so a tall or wide card never leaves
+   a gap under its caption */
+.gallery-card.is-feature .gallery-item{aspect-ratio:1.42;flex:1;min-height:0}
+.gallery-card.is-tall .gallery-item{aspect-ratio:3/4;flex:1;min-height:0}
+.gallery-card.is-wide .gallery-item{aspect-ratio:2.1;flex:1;min-height:0}
+.gal-track{position:absolute;inset:0;display:block}
+.gal-frame{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  opacity:0;transition:opacity 1s var(--ease),transform .5s var(--ease);
+}
+.gal-frame.is-active{opacity:1}
+.gallery-item > img{transition:transform .5s var(--ease)}
+.gallery-item:hover > img{transform:scale(1.03)}
 .gallery-item::after{
-  content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(6,42,28,.45),transparent 55%);
+  content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(to top,rgba(6,42,28,.42),transparent 52%);
   opacity:0;transition:opacity .3s;
 }
-.gallery-item:hover img{transform:scale(1.05)}
+.gallery-item:hover .gal-frame.is-active{transform:scale(1.045)}
 .gallery-item:hover::after{opacity:1}
 .gallery-item .zoom{
-  position:absolute;right:10px;bottom:10px;width:30px;height:30px;border-radius:50%;
+  position:absolute;right:10px;bottom:10px;width:30px;height:30px;border-radius:50%;z-index:3;
   background:rgba(255,255,255,.92);display:grid;place-items:center;opacity:0;transform:translateY(6px);
   transition:opacity .25s,transform .25s;
 }
 .gallery-item:hover .zoom,.gallery-item:focus-visible .zoom{opacity:1;transform:none}
 .gallery-item .zoom svg{width:14px;height:14px;color:var(--green-800)}
+.gal-badge{
+  position:absolute;left:10px;top:10px;z-index:3;padding:3px 9px;border-radius:999px;
+  font-size:11.5px;font-weight:600;letter-spacing:.06em;color:#fff;background:rgba(6,26,18,.58);
+  backdrop-filter:blur(4px);
+}
+.gal-dots{position:absolute;left:50%;bottom:12px;transform:translateX(-50%);display:flex;gap:5px;z-index:3}
+.gal-dots i{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.45);transition:background .3s}
+.gal-dots i.is-on{background:#fff}
+.gal-cap{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 10px;font-size:13.5px;line-height:1.5}
+.gal-title{color:var(--ink);font-weight:600}
+.gal-date{color:var(--green-600);font-size:12.5px;font-style:italic}
+@media (prefers-color-scheme: dark){
+  .gal-date{color:var(--link)}
+  .gal-year-head{color:var(--ink)}
+}
 
 .lightbox{
   position:fixed;inset:0;z-index:200;display:none;place-items:center;
@@ -856,7 +904,7 @@ body.hdr-compact .toolbar{top:64px}
   .card-grid{grid-template-columns:1fr 1fr}
   .patent-grid{grid-template-columns:1fr}
   .course-grid{grid-template-columns:1fr}
-  .gallery-grid{columns:2}
+  .gallery-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 16px}
   .footer-grid{grid-template-columns:1fr 1fr;gap:30px}
   .news-mini{grid-template-columns:1fr}
   .research-figs{grid-template-columns:1fr;gap:18px}
@@ -898,9 +946,17 @@ body.hdr-compact .toolbar{top:64px}
   .alumni-year{grid-template-columns:1fr;gap:10px;margin-bottom:34px}
   .alumni-year h2{padding-top:0;font-size:15px}
   .alumni-list li{grid-template-columns:1fr;gap:2px;padding:12px 0}
-  .gallery-grid{columns:1;column-gap:0}
-  .gallery-item{margin-bottom:10px}
+  .gallery-grid{grid-template-columns:minmax(0,1fr);gap:24px}
+  .gallery-card.is-feature,.gallery-card.is-tall,.gallery-card.is-wide{grid-column:auto;grid-row:auto}
+  .gallery-card.is-tall .gallery-item{aspect-ratio:3/4;flex:none}
+  .gallery-card.is-wide .gallery-item{aspect-ratio:16/9;flex:none}
   .gallery-item .zoom{opacity:1;transform:none;width:26px;height:26px;right:8px;bottom:8px}
+  .gal-year{padding-top:38px}
+  .gal-year-head{margin-bottom:16px}
+  .gal-jump-wrap{padding-top:18px}
+  .gal-jump{flex-wrap:nowrap;overflow-x:auto;gap:2px;padding-bottom:14px;scrollbar-width:none}
+  .gal-jump::-webkit-scrollbar{display:none}
+  .gal-jump a{flex:none;padding:5px 10px}
   .latest{grid-template-columns:minmax(0,1fr) auto;gap:10px 14px}
   .latest .yr{grid-column:1;grid-row:1;font-size:12px}
   .latest > div{grid-column:1;grid-row:2}
