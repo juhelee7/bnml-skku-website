@@ -30,7 +30,7 @@
   var cfg = pages[id] || pages['1'];
   document.getElementById('tag').textContent = '390 px · ' + cfg.label;
   var f = document.getElementById('fr');
-  f.src = cfg.src + '?v=h' + id;
+  f.src = cfg.src + '?v=h' + id + Date.now();
   f.addEventListener('load', function(){
     if(!cfg.sel) return;
     var w = f.contentWindow, d = f.contentDocument;
