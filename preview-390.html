@@ -23,7 +23,8 @@
     '5': {src:'./news/',        sel:'.news-year',   label:'news 2026'},
     '6': {src:'./research/',    sel:'#bio-derived-materials', label:'research area 03'},
     '7': {src:'./researchers/', sel:'.people-group:last-of-type article:last-child', label:'researchers: Rashmita'},
-    '8': {src:'./researchers/', sel:'.people-group:last-of-type article:nth-of-type(7)', label:'researchers: Hyunlee Kim'}
+    '8': {src:'./researchers/', sel:'.people-group:last-of-type article:nth-of-type(7)', label:'researchers: Hyunlee Kim'},
+    '9': {src:'./gallery/',     sel:'.gallery-grid', label:'gallery one column'}
   };
   var id = (location.search.match(/p=(\d)/) || [,'1'])[1];
   var cfg = pages[id] || pages['1'];
