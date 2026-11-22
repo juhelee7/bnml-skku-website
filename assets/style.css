@@ -605,7 +605,7 @@ body.hdr-compact .toolbar{top:64px}
 
 /* ---------------------------------------------------------------- gallery */
 .gallery-grid{
-  columns:4;column-gap:14px;
+  columns:3;column-gap:16px;
 }
 .gallery-item{
   position:relative;display:block;width:100%;border:0;padding:0;background:var(--surface);
@@ -827,7 +827,7 @@ body.hdr-compact .toolbar{top:64px}
   .card-grid{grid-template-columns:1fr 1fr}
   .patent-grid{grid-template-columns:1fr}
   .course-grid{grid-template-columns:1fr}
-  .gallery-grid{columns:3}
+  .gallery-grid{columns:2}
   .footer-grid{grid-template-columns:1fr 1fr;gap:30px}
   .news-mini{grid-template-columns:1fr}
   .research-figs{grid-template-columns:1fr;gap:18px}
@@ -869,7 +869,7 @@ body.hdr-compact .toolbar{top:64px}
   .alumni-year{grid-template-columns:1fr;gap:10px;margin-bottom:34px}
   .alumni-year h2{padding-top:0;font-size:15px}
   .alumni-list li{grid-template-columns:1fr;gap:2px;padding:12px 0}
-  .gallery-grid{columns:2;column-gap:10px}
+  .gallery-grid{columns:1;column-gap:0}
   .gallery-item{margin-bottom:10px}
   .gallery-item .zoom{opacity:1;transform:none;width:26px;height:26px;right:8px;bottom:8px}
   .latest{grid-template-columns:minmax(0,1fr) auto;gap:10px 14px}
