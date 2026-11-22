@@ -958,6 +958,8 @@ body.hdr-compact .toolbar{top:64px}
     --shadow-lg:0 24px 60px -24px rgba(0,0,0,.7);
   }
   .site-header{background:var(--card);border-bottom-color:var(--line)}
+  /* the header wordmark carries the same bloom as the footer wordmark */
+  .brand-link img{filter:drop-shadow(0 0 9px rgba(57,255,136,.3))}
   .toolbar{background:rgba(11,20,16,.96)}
   .menu{background:var(--card)}
   .submenu{background:var(--card);box-shadow:0 20px 44px -24px rgba(0,0,0,.85)}
