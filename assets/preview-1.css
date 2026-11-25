@@ -60,12 +60,8 @@
 .pv-1 .latest.linked:hover{background:var(--accent-soft)}
 
 /* ---- dark blocks: a warm hairline and label, nothing else ---------------- */
-.pv-1 .hero::before{
-  background-image:
-    radial-gradient(circle at 6% 98%,rgba(200,90,50,.26),transparent 52%),
-    radial-gradient(circle at 18% 12%,rgba(19,122,81,.5),transparent 60%),
-    repeating-linear-gradient(135deg,rgba(255,255,255,.05) 0 1px,transparent 1px 16px);
-}
+/* the hero keeps the house ::before (green glow + grain) untouched: in the
+   restrained option the 火 colour does not enter the photograph's panel at all */
 .pv-1 .director{box-shadow:inset 0 0 0 1px rgba(233,169,133,.18)}
 .pv-1 .director-body .k{color:rgba(240,206,184,.62)}
 .pv-1 .contact-band{border-top:2px solid var(--accent)}
