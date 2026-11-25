@@ -1,0 +1,73 @@
+/* ==========================================================================
+   BNML — 목생화(木生火) 시안 1안 · 차분한 테라코타 (절제형)
+   Loaded after assets/style.css by preview-1.html only.
+   Colour overrides only: no text, image, structure or link is changed.
+   Base stays the lab's own ivory/white paper and 성대 딥그린(#0b5d3b);
+   warm terracotta is spent only on section labels, hairlines and hovers.
+   ========================================================================== */
+
+.pv-1{
+  --accent:#C85A32;               /* 규칙·포인트 면 */
+  --accent-ink:#BC5230;           /* 흰 바탕 위 작은 글자 (대비 4.8:1) */
+  --accent-fill:#B9502C;          /* 흰 글자를 얹는 버튼 면 (대비 5.0:1) */
+  --accent-line:rgba(200,90,50,.30);
+  --accent-on-dark:#E9A985;       /* 짙은 초록 위 포인트 */
+  --accent-soft:#FBEFE8;
+  --accent-wash:#F6E3D9;
+  --pv-surface:#FAF8F5;
+  --pv-accent:#C85A32;
+  --pv-pill:#B9502C;
+}
+@media (prefers-color-scheme: dark){
+  .pv-1{
+    --accent-ink:#E08A62;
+    --accent-line:rgba(224,138,98,.34);
+    --accent-soft:#2A1A14;
+    --accent-wash:#3A2318;
+    --pv-surface:#0F1714;
+  }
+}
+
+/* ---- section labels and small caps take the warm ink ---------------------- */
+.pv-1 .eyebrow{color:var(--accent-ink)}
+.pv-1 .card-num{color:var(--accent-ink)}
+.pv-1 .news-mini .date{color:var(--accent-ink)}
+.pv-1 .latest .yr{color:var(--accent-ink)}
+
+/* ---- hairlines: only where something already had a rule ------------------ */
+.pv-1 .section-head .more:hover,
+.pv-1 .card-link:hover{color:var(--accent-ink)}
+.pv-1 .card:hover{border-color:var(--accent-line)}
+.pv-1 .news-mini article:hover{border-top-color:var(--accent)}
+
+/* the shaded bands keep their paper but warm by a single degree */
+.pv-1 .section.surface{
+  background-color:var(--pv-surface);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='96' viewBox='0 0 56 96'%3E%3Cpath d='M28 0l24 14v28L28 56 4 42V14z' fill='none' stroke='%23c85a32' stroke-opacity='.05' stroke-width='1'/%3E%3Cpath d='M28 96l24-14V54L28 40 4 54v28z' fill='none' stroke='%23c85a32' stroke-opacity='.05' stroke-width='1'/%3E%3C/svg%3E");
+  border-top-color:var(--accent-line);
+  border-bottom-color:var(--accent-line);
+}
+
+/* ---- the one warm surface: the primary button reads as terracotta ink ---- */
+.pv-1 .btn-primary{color:var(--accent-fill)}
+.pv-1 .btn-primary:hover{background:var(--accent-fill);color:#fff}
+.pv-1 .btn-line:hover{border-color:var(--accent-line);color:var(--accent-ink)}
+.pv-1 .btn-ghost{border-color:rgba(255,255,255,.34)}
+.pv-1 .btn-ghost:hover{background:rgba(233,169,133,.14)}
+
+/* ---- chips: green by default, warm only while touched -------------------- */
+.pv-1 .latest.linked:hover .doi{background:var(--accent-fill);border-color:var(--accent-fill)}
+.pv-1 .latest.linked:hover{background:var(--accent-soft)}
+
+/* ---- dark blocks: a warm hairline and label, nothing else ---------------- */
+.pv-1 .hero::before{
+  background-image:
+    radial-gradient(circle at 6% 98%,rgba(200,90,50,.26),transparent 52%),
+    radial-gradient(circle at 18% 12%,rgba(19,122,81,.5),transparent 60%),
+    repeating-linear-gradient(135deg,rgba(255,255,255,.05) 0 1px,transparent 1px 16px);
+}
+.pv-1 .director{box-shadow:inset 0 0 0 1px rgba(233,169,133,.18)}
+.pv-1 .director-body .k{color:rgba(240,206,184,.62)}
+.pv-1 .contact-band{border-top:2px solid var(--accent)}
+.pv-1 .contact-band .eyebrow{color:var(--accent-on-dark) !important}
+.pv-1 ::selection{background:var(--accent-wash);color:#5B2412}
