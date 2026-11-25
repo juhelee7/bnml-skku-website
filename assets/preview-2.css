@@ -84,7 +84,7 @@
 .pv-2 .news-year > h2::after{background:linear-gradient(90deg,var(--accent-line),transparent)}
 
 /* ---- the two dark decorative blocks pick up the second colour ------------ */
-.pv-2 .director{background:linear-gradient(135deg,#062a1c 0%,#0b5d3b 72%,#7A3C26 100%)}
+.pv-2 .director{background:linear-gradient(135deg,#062a1c 0%,#0b5d3b 80%,#6E3524 100%)}
 .pv-2 .director-body .k{color:rgba(246,190,168,.72)}
 .pv-2 .contact-band{
   background-color:#062a1c;
