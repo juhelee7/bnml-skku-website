@@ -45,9 +45,9 @@
 .pv-2 .hero{background:linear-gradient(105deg,#052a1c 0%,#073322 55%,#0b5d3b 100%)}
 .pv-2 .hero::before{
   background-image:
-    radial-gradient(circle at 2% 100%,rgba(217,107,67,.5),transparent 54%),
-    radial-gradient(circle at 30% 4%,rgba(217,107,67,.2),transparent 44%),
-    radial-gradient(circle at 18% 12%,rgba(19,122,81,.38),transparent 60%),
+    radial-gradient(46% 58% at -8% 108%,rgba(236,112,64,.52),rgba(236,112,64,.1) 44%,transparent 66%),
+    radial-gradient(34% 40% at 24% -8%,rgba(217,107,67,.16),transparent 62%),
+    radial-gradient(circle at 18% 12%,rgba(19,122,81,.42),transparent 60%),
     repeating-linear-gradient(135deg,rgba(255,255,255,.05) 0 1px,transparent 1px 16px);
 }
 .pv-2 .hero .btn-primary{background:var(--accent-fill);color:#fff;box-shadow:0 14px 30px -18px rgba(0,0,0,.9)}
@@ -89,10 +89,9 @@
 .pv-2 .contact-band{
   background-color:#062a1c;
   background-image:
-    radial-gradient(circle at 92% 0%,rgba(217,107,67,.42),transparent 52%),
-    linear-gradient(118deg,#062a1c 0%,#08382480 60%,#4A2A1E 100%);
+    radial-gradient(58% 120% at 104% -14%,rgba(217,107,67,.30),rgba(217,107,67,.08) 46%,transparent 72%);
   border-top:3px solid transparent;
-  border-image:linear-gradient(90deg,var(--green-700),var(--accent)) 1;
+  border-image:linear-gradient(90deg,var(--green-700) 0%,var(--green-600) 42%,var(--accent) 100%) 1;
 }
 .pv-2 .contact-band .eyebrow{color:var(--accent-on-dark) !important}
 .pv-2 .contact-band .btn-primary{background:#fff;color:var(--accent-fill)}
