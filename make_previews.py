@@ -12,7 +12,7 @@ VARIANTS = [
     (2, "웜 코랄·그라데이션 (생기형)"),
     (3, "깊은 포레스트 + 버건디 (중후형)"),
 ]
-VER = "20261125f"
+VER = "20261125g"
 BASE = "https://juhelee7.github.io/bnml-skku-website/"
 
 def build(n, desc):

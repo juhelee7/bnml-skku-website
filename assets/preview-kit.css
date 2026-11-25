@@ -62,6 +62,11 @@
 @media (max-width:820px){
   .pv-tag em{display:none}
 }
+/* the phone drawer is fixed and starts under the header, so it has to clear the
+   preview bar as well or it would open 40px too high and cover the header */
+@media (max-width:960px){
+  .pv .menu{top:calc(var(--pv-bar) + var(--header-h))}
+}
 @media (max-width:600px){
   .pv{--pv-bar:38px}
   .pv-bar-in{padding:0 14px;gap:8px;justify-content:center}
