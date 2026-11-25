@@ -41,13 +41,13 @@
 .pv-2 .nav-cta{background:linear-gradient(120deg,var(--green-800),var(--green-700))}
 .pv-2 .nav-cta:hover{background:linear-gradient(120deg,var(--green-900),var(--green-800)) !important}
 
-/* ---- hero: deep green panel with a low coral glow behind the headline ---- */
-.pv-2 .hero{background:linear-gradient(105deg,#052a1c 0%,#073322 55%,#0b5d3b 100%)}
+/* ---- hero: deep green panel with a warm light leak at the photo seam ---- */
+.pv-2 .hero{background:linear-gradient(100deg,#062a1c 0%,#0a4230 55%,#0b5d3b 100%)}
 .pv-2 .hero::before{
   background-image:
-    radial-gradient(46% 58% at -8% 108%,rgba(236,112,64,.52),rgba(236,112,64,.1) 44%,transparent 66%),
-    radial-gradient(34% 40% at 24% -8%,rgba(217,107,67,.16),transparent 62%),
-    radial-gradient(circle at 18% 12%,rgba(19,122,81,.42),transparent 60%),
+    linear-gradient(90deg,rgba(217,107,67,0) 43%,rgba(217,107,67,.34) 47.6%,rgba(217,107,67,.42) 48.6%,rgba(217,107,67,0) 54%),
+    radial-gradient(30% 34% at 1% 101%,rgba(226,110,70,.34),transparent 80%),
+    radial-gradient(circle at 18% 12%,rgba(19,122,81,.4),transparent 60%),
     repeating-linear-gradient(135deg,rgba(255,255,255,.05) 0 1px,transparent 1px 16px);
 }
 .pv-2 .hero .btn-primary{background:var(--accent-fill);color:#fff;box-shadow:0 14px 30px -18px rgba(0,0,0,.9)}
@@ -84,12 +84,12 @@
 .pv-2 .news-year > h2::after{background:linear-gradient(90deg,var(--accent-line),transparent)}
 
 /* ---- the two dark decorative blocks pick up the second colour ------------ */
-.pv-2 .director{background:linear-gradient(135deg,#062a1c 0%,#0b5d3b 58%,#6A3524 100%)}
+.pv-2 .director{background:linear-gradient(135deg,#062a1c 0%,#0b5d3b 72%,#7A3C26 100%)}
 .pv-2 .director-body .k{color:rgba(246,190,168,.72)}
 .pv-2 .contact-band{
   background-color:#062a1c;
   background-image:
-    radial-gradient(58% 120% at 104% -14%,rgba(217,107,67,.30),rgba(217,107,67,.08) 46%,transparent 72%);
+    linear-gradient(90deg,rgba(217,107,67,0) 84%,rgba(217,107,67,.30) 100%);
   border-top:3px solid transparent;
   border-image:linear-gradient(90deg,var(--green-700) 0%,var(--green-600) 42%,var(--accent) 100%) 1;
 }

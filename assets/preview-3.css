@@ -56,7 +56,7 @@
 /* ---- hero: deep forest with a burgundy glow low on the panel ------------- */
 .pv-3 .hero::before{
   background-image:
-    radial-gradient(46% 60% at -6% 108%,rgba(186,66,56,.5),rgba(186,66,56,.1) 44%,transparent 66%),
+    radial-gradient(34% 40% at -2% 104%,rgba(186,66,56,.46),transparent 78%),
     radial-gradient(circle at 20% 10%,rgba(10,74,48,.62),transparent 58%),
     repeating-linear-gradient(135deg,rgba(255,255,255,.045) 0 1px,transparent 1px 16px);
 }
@@ -88,12 +88,12 @@
 .pv-3 .news-year > h2::after{background:var(--pv-warm-line)}
 
 /* ---- the two dark blocks: forest into burgundy --------------------------- */
-.pv-3 .director{background:linear-gradient(135deg,#04211a 0%,#0b5d3b 55%,#45201C 100%)}
+.pv-3 .director{background:linear-gradient(135deg,#04211a 0%,#0b5d3b 70%,#4A2420 100%)}
 .pv-3 .director-body .k{color:rgba(226,178,168,.7)}
 .pv-3 .contact-band{
   background-color:#04211a;
   background-image:
-    radial-gradient(58% 118% at 104% -14%,rgba(166,58,50,.42),rgba(166,58,50,.12) 44%,transparent 72%);
+    linear-gradient(90deg,rgba(166,58,50,0) 82%,rgba(166,58,50,.42) 100%);
   border-top:2px solid var(--accent);
 }
 .pv-3 .contact-band .eyebrow{color:var(--accent-on-dark) !important}
